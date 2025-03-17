@@ -1,15 +1,15 @@
-package org.example.entity;
+package org.example.exceptions;
 
+public class ResourceNotFoundException extends RuntimeException {
+     String resourceName;
+     String fieldName;
+     String filed;
 
-public class NoResourceFoundException extends RuntimeException {
-    private String resourceName;
-    private String fieldName;
-    private String filed;
-    private String fieldId;
-
-    public NoResourceFoundException(String resourceName, String fieldName, String filed) {
+    public ResourceNotFoundException(String resourceName, String fieldName, String filed) {
+        super(String.format("%s not found with %s: %s",resourceName,filed,fieldName));
         this.resourceName = resourceName;
         this.fieldName = fieldName;
         this.filed = filed;
     }
+
 }

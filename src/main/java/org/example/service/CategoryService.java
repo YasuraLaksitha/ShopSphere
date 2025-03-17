@@ -1,13 +1,16 @@
 package org.example.service;
 
 import org.example.dto.CategoryDTO;
-
-import java.util.Set;
+import org.example.dto.CategoryPaginationResponseDTO;
 
 public interface CategoryService {
     CategoryDTO save(CategoryDTO categoryDTO);
+
     CategoryDTO update(CategoryDTO categoryDTO);
-    CategoryDTO delete(Long id);
+
+    CategoryDTO delete(String name);
+
     CategoryDTO retrieveByName(String name);
-    Set<CategoryDTO> retrieveAll();
+
+    CategoryPaginationResponseDTO retrieveAll(Integer page, Integer size, String sortBy, String sortDir);
 }

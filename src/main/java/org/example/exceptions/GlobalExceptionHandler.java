@@ -1,4 +1,4 @@
-package org.example.controller.exceptions;
+package org.example.exceptions;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 
 @RestControllerAdvice
+@SuppressWarnings("All")
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
@@ -29,5 +30,10 @@ public class GlobalExceptionHandler {
         });
 
         return ResponseEntity.badRequest().body(errorMap);
+    }
+
+    public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException e) {
+        final String message = e.getMessage();
+        return ResponseEntity.badRequest().body(message);
     }
 }
